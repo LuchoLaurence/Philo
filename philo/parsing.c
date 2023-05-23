@@ -23,12 +23,12 @@ int	check_args(int argc, char **argv, t_p *p)
 		p->args.meal_eat = -1;
 		if (argc == 6)
 			p->args.meal_eat = ft_atoi(argv[5]);
-		if (p->args.number <= 0 || p->args.die_time <= 0 || p->args.eat_time <= 0
-			|| p->args.sleep_time <= 0)
+		if (p->args.number <= 0 || p->args.die_time <= 0
+			|| p->args.eat_time <= 0 || p->args.sleep_time <= 0)
 			ft_exit("Args must be positive");
-		return(1);
+		return (1);
 	}
-    return(0);
+	return (0);
 }
 
 int	is_numeric(char **argv, int i, int j)

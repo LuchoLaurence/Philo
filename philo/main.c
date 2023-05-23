@@ -12,22 +12,25 @@
 
 #include "philo.h"
 
-void ft_exit(char *str)
+void	ft_exit(char *str)
 {
 	printf("Erreur :\n");
 	printf("%s", str);
 	exit(1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_p	p;
+
 	if (!(check_args(argc, argv, &p)))
 		ft_exit("Arguments invalides");
 	p.ph = malloc(sizeof(t_philo) * p.args.number);
 	if (!p.ph)
 		ft_exit("Malloc returned NULL");
 	if (!(init(&p)))
+		return (1);
+	if (!(thread(&p)))
 		return (1);
 	return (0);
 }

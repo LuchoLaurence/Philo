@@ -12,13 +12,11 @@
 
 #include "philo.h"
 
-void	*thread(void *data)
+void	*thread(t_p *p)
 {
-    t_philo	*ph;
-	ph = (t_philo *)data;
-	while(!check_death)
+	while (!check_death(p))
 	{
-		ph->ms_eat = gettimeofday();
+		
 	}
-    return (NULL);
+	return (NULL);
 }

@@ -27,36 +27,33 @@ typedef struct s_arg
 	int				eat_time;
 	int				sleep_time;
 	int				meal_eat;
-	long int    	start_time;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	dead;
 	pthread_mutex_t	time_eat;
 	pthread_mutex_t	finish;
+	long int		start_time;
 	int				nb_p_end;
 	int				stop;
-	
-}   t_arg;
+}	t_arg;
 typedef struct s_philo
 {
 	int					id;
-	pthread_t			thread_id;
-	pthread_t			thread_death_id;
-	pthread_mutex_t		*r_f;
-	pthread_mutex_t		l_f;
-    t_arg				*p_args;
 	int					ms_eat;
 	int					nb_eat;
-	int 				finish;
-
-}   t_philo;
+	int					finish;
+	pthread_mutex_t		*r_f;
+	pthread_mutex_t		l_f;
+	pthread_t			thread_id;
+	pthread_t			thread_death_id;
+	t_arg				*p_args;
+}	t_philo;
 
 typedef struct s_p
 {
-    t_philo *ph;
-    t_arg   args;
+	t_philo	*ph;
+	t_arg	args;
 
 }	t_p;
-
 
 void		ft_exit(char *str);
 
@@ -71,5 +68,7 @@ void		ft_usleep(long int time_in_ms);
 
 int			init(t_p *p);
 void		init_mutex(t_p *p);
+
+int			check_death(t_p *p);
 
 #endif
