@@ -14,9 +14,13 @@
 
 void	*thread(t_p *p)
 {
-	while (!check_death(p))
+	int	i;
+
+	i = 0;
+	while (i < p->args.number)
 	{
-		
+		pthread_create(&(p->ph[i].thread_id), NULL, p_thread, (void)p);
+		i++;
 	}
 	return (NULL);
 }

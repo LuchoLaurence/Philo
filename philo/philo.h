@@ -71,4 +71,5 @@ void		init_mutex(t_p *p);
 
 int			check_death(t_p *p);
 
+void		*thread(t_p *p);
 #endif
