@@ -33,3 +33,11 @@ void	ft_usleep(long int time_in_ms)
 	while ((actual_time() - start_time) < time_in_ms)
 		usleep(time_in_ms / 10);
 }
+
+void	write_status(char *str, t_philo *ph)
+{	
+	long int	time;
+
+	time = actual_time() - ph->p_args->start_time;
+	printf("%ld %d %s\n", time, ph->id, str);
+}

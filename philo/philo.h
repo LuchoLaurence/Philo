@@ -65,11 +65,15 @@ int			ft_strlen(char *str);
 
 long int	actual_time(void);
 void		ft_usleep(long int time_in_ms);
+void		write_status(char *str, t_philo *ph);
 
 int			init(t_p *p);
 void		init_mutex(t_p *p);
 
-int			check_death(t_p *p);
+int			check_death(t_philo *p);
 
-void		*thread(t_p *p);
+int			init_threading(t_p *p);
+
+void		ft_doing(t_philo *ph);
+void		ft_dodo(t_philo *ph);
 #endif

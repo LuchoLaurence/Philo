@@ -33,8 +33,9 @@ void	init_philosophers(t_p *p)
 		p->ph[i].finish = 0;
 		p->ph[i].r_f = NULL;
 		pthread_mutex_init(&p->ph[i].l_f, NULL);
+		p->ph[i].p_args = &p->args;
 		if (p->args.number == 1)
-			ft_exit("il ne peut y avoir qu'un philosophe");
+			ft_exit("il ne peut pas y avoir qu'un philosophe");
 		if (i == p->args.number - 1)
 			p->ph[i].r_f = &p->ph[0].l_f;
 		else
@@ -50,6 +51,5 @@ int	init(t_p *p)
 	p->args.nb_p_end = 0;
 	init_mutex(p);
 	init_philosophers(p);
-	//  return 3;
-	return (0);
+	return (1);
 }

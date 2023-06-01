@@ -15,17 +15,21 @@
 void	*p_thread(void *data)
 {
 	int		i;
-	t_philo *ph;
+	t_philo	*ph;
 
 	i = 0;
-	ph = (t_philo)data;
+	ph = (t_philo *)data;
 	if (ph->id % 2)
-		ft_usleep(ph->p_args->eat_time / 10);
-	while (!(check_death(ph)))
-	
+		sleep(1);
+	//ft_usleep(ph->p_args->eat_time / 10);
+	while (check_death(ph))
+	{
+		ft_doing(ph);
+	}
+	return (NULL);
 }
 
-void	*init_threading(t_p *p)
+int	init_threading(t_p *p)
 {
 	int	i;
 
@@ -33,8 +37,12 @@ void	*init_threading(t_p *p)
 	while (i < p->args.number)
 	{
 		if (pthread_create(&(p->ph[i].thread_id), NULL, p_thread, &p->ph[i]))
-			return (ft_exit("pthread ne retourne pas 0\n"));
+			ft_exit("pthread ne retourne pas 0\n");
 		i++;
 	}
-	return (NULL);
+	i = 0;
+	while (i++ < p->args.number)
+		pthread_join(p->ph[i].thread_id, NULL);
+	printf("end threading\n");
+	return (0);
 }

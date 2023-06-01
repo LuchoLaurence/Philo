@@ -1,4 +1,4 @@
-SRCS = main.c parsing.c utils.c init.c utils2.c thread.c
+SRCS = main.c parsing.c utils.c init.c utils2.c thread.c doing.c dead.c
 
 SRCSB = thread.c
 

@@ -12,7 +12,8 @@
 
 #include "philo.h"
 
-int	check_death(t_p *p)
+int	check_death(t_philo *p)
 {
+	(void)p;
 	return (1);
 }

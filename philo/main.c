@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 	if (!p.ph)
 		ft_exit("Malloc returned NULL");
 	if (!(init(&p)))
-		return (1);
-	if (!(init_threading(&p)))
-		return (1);
+		return (2);
+	if (init_threading(&p))
+		return (3);
 	return (0);
 }
