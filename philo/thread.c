@@ -12,14 +12,28 @@
 
 #include "philo.h"
 
-void	*thread(t_p *p)
+void	*p_thread(void *data)
+{
+	int		i;
+	t_philo *ph;
+
+	i = 0;
+	ph = (t_philo)data;
+	if (ph->id % 2)
+		ft_usleep(ph->p_args->eat_time / 10);
+	while (!(check_death(ph)))
+	
+}
+
+void	*init_threading(t_p *p)
 {
 	int	i;
 
 	i = 0;
 	while (i < p->args.number)
 	{
-		pthread_create(&(p->ph[i].thread_id), NULL, p_thread, (void)p);
+		if (pthread_create(&(p->ph[i].thread_id), NULL, p_thread, &p->ph[i]))
+			return (ft_exit("pthread ne retourne pas 0\n"));
 		i++;
 	}
 	return (NULL);
