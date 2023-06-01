@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		ft_exit("Malloc returned NULL");
 	if (!(init(&p)))
 		return (1);
-	if (!(thread(&p)))
+	if (!(init_threading(&p)))
 		return (1);
 	return (0);
 }
